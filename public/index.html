@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>LIVE TRACKER</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="map.js"></script>
+    <link href="style.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><i class="fas fa-map-marker-alt"></i> LIVE COVID TRACKER</a
+        >
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResposive" aria-controls="navbarNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+       
+        <div class="collapse navbar-collapse" id="navbarResposive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#map-section">Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Connect</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home page -->
+    
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="cov2.jpg" alt="image" />
+          <div class="carousel-caption">
+            <h3 class="display-2">LIVE COVID TRACKER</h3>
+            <h4>
+              Get real-time inforamtion about people that have covid near your
+              area.
+            </h4>
+            <a href="#quiz-section">
+              <button type="button" class="btn btn-outline-light btn-lg">
+                Take quiz
+              </button>
+            </a>
+          
+            <a href="#map-section">
+              <button type="button" class="btn btn-primary btn-lg">
+                LIVE MAP
+              </button>
+            </a>
+          </div>
+        </div>
+        
+      
+      </div>
+
+    <!-- Quiz -->
+    <a name="quiz-section">
+      <br>
+      <br>
+      <div class="quiz">
+        <h2 style="text-align: center;">Add yourself to the databse</h2>
+        <hr class="hrow">
+      </div>
+      
+      <div class="question">
+        <label for="fname"><strong>1.</strong> Enter your Username. Please remember it for the next time you come:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+        <label for="q1"><strong>2.</strong> Do you have symptoms of COVID such as high fever, coughing, sneezing:</label>
+        
+        <div class="q1">
+          <select id="q1" class="q1">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        
+        <br>
+        <label for="q2"><strong>3.</strong> Do you wish to be added to the live covid tracking databse so that other people get live location updates of your location: </label>
+        <div class="q2">
+          <select id="q2">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+        <br>
+        <div class="submit-quiz">
+          <button onclick="submitQuiz()" class="btn btn-primary btn-md button">Submit Quiz</button>
+        </div>
+      </div>
+    </a>
+
+
+
+    <!-- Location tracker -->
+    <a name="map-section" class="map-section">
+      <br />
+      <br />
+
+      <h2 class = "loc">Get your Location</h2>
+      <hr class="co-hr">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-xs-3">
+            <button onclick="getLocation()" class="btn btn-primary btn-lg" type="button">
+              Add My Co-ordinates
+            </button>
+          </div>
+          <div class="col-xs-3">
+            <button onclick="showLocation()" class="btn btn-primary btn-lg" type="button">
+              Show Map Only
+            </button>
+          </div>
+          
+        </div>
+          
+      </div>
+
+      <p id="location">
+        <div class="lat-lng">
+          <a id="map-link" target="_blank"></a>
+          <br>
+          <span id="lat"></span>
+          <br />
+          <span id="lng"></span>
+        </div>
+      </p>
+      
+      <!-- We will dynamically create this map. -->
+      <div id="insert-map-here"></div>
+      <button
+        onClick="removeMap()"
+        style="display: none;"
+        id="remove"
+      >
+        Remove Map
+      </button>
+    </a>
+    <br>
+    <br>
+    
+    <!-- SUMMARY Not yet implementing as we dont have any data available.-->
+
+    <!-- <div class="summary">
+
+      <h2 class="h2">SUMMARY</h2>
+
+      <label for="radius"><strong>1.</strong> Enter the radius in (km) for the number of cases in your area:</label>
+      <input type="text" id="radius" name="radius">
+      <button type="button" class="btn btn-secondary btn-md button_radius" onclick="getRadius()">Submit</button><br>
+      <small id="small">Disclaimer: This data only cosists of information that other users have entered as its a voluntary initiative and might not accurately depict the current scenario in your area.</small>
+    </div> -->
+
+    <!-- Connect to Us  -->
+    <div id="connect">
+      <div class="container-fluid padding">
+        <div class="row text-center">
+          <div class="col-12">
+            <h2>Connect</h2>
+          </div>
+          <div class="col-12 social">
+            <a href="https://www.facebook.com/kak.pro.940" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/Kartik-Sangwan" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:kartiksangwan29@gmail.com" target="_blank"><i class="fab fa-google-plus-g"></i></a>
+            <a href="https://www.linkedin.com/in/kartik-sangwan-293b81125/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- FOTTER -->
+    <footer>
+      <div class="col-12">
+        <hr class="light-100" />
+        <h5 id="h5">&copy; Kartik-Sangwan</h5>
+      </div>
+    </footer>
+
+    <!-- This is the google api link -->
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlf8i4UL5awyTjKeJGXRmZswK86GdC39c"
+    ></script>
+  </body>
+</html>
