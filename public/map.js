@@ -62,7 +62,7 @@ function showPosition(position) {
 async function getData() {
   const response = await fetch("/data");
   const data = await response.json();
-
+  console.log(data);
   return data;
 }
 
@@ -163,6 +163,7 @@ function submitQuiz() {
 function showLocation() {
   // Just show the current map with the locations from databse.
   const latLng = getData();
+  console.log(latLng);
   // Need to check if map has been created or not.
   createMap(latLng[0]);
   latLng.then(function (result) {
