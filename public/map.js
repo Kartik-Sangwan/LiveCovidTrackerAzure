@@ -163,7 +163,7 @@ function submitQuiz() {
 function showLocation() {
   // Just show the current map with the locations from databse.
   const latLng = getData();
-  console.log(latLng);
+
   // Need to check if map has been created or not.
   createMap(latLng[0]);
   latLng.then(function (result) {
@@ -172,6 +172,7 @@ function showLocation() {
     const removeMapBtn = document.querySelector("#remove");
     removeMapBtn.style.display = "block";
     for (each of result) {
+      console.log(each);
       // Add one marker for each of the entries in the database.
       createMarker(each);
     }
