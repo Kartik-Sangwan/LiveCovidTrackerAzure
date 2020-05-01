@@ -9,13 +9,9 @@
   "author": "Kartik-Sangwan",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "express": "^4.17.1"
-=======
     "express": "^4.17.1",
     "mocha": "^7.1.2",
     "nedb": "^1.8.0"
->>>>>>> 554d56fe250e818244f4a2ea0af33fc86b41cb38
   }
 }
 
