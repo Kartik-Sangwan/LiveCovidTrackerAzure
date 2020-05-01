@@ -52,6 +52,7 @@ function showPosition(position) {
   latLng.then(function (result) {
     // Result consists of the array of latitudes and longitudes.
     for (each of result) {
+      console.log(each);
       // Add one marker for each of the entries in the database.
       createMarker(each);
     }
